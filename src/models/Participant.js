@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const beautifyUnique = require('mongoose-beautiful-unique-validation')
+const mongoosePaginate = require('mongoose-paginate')
 
 const ParticipantSchema = new mongoose.Schema({
 	name: {
@@ -19,5 +20,6 @@ const ParticipantSchema = new mongoose.Schema({
 }, { timestamps: true })
 
 ParticipantSchema.plugin(beautifyUnique)
+ParticipantSchema.plugin(mongoosePaginate)
 
 module.exports = mongoose.model('Participant', ParticipantSchema)
