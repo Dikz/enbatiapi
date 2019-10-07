@@ -4,6 +4,7 @@ const { resolve } = require('path')
 
 const Participant = require("./controllers/Participant")
 const Question = require("./controllers/Question")
+const Avatar = require("./controllers/Avatar")
 
 routes.get('/', (req, res) => {
 	res.send({ message: "Hello World :)" })
@@ -16,5 +17,8 @@ routes.post('/participants', Participant.store)
 
 routes.get('/questions/:id', Question.show)
 routes.post('/questions', Question.store)
+
+routes.get('/avatars', Avatar.index)
+routes.post('/avatars', Avatar.store)
 
 module.exports = routes
