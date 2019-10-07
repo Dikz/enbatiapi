@@ -15,6 +15,7 @@ routes.use('/images', express.static(resolve(__dirname, 'img')))
 routes.get('/participants', Participant.index)
 routes.post('/participants', Participant.store)
 
+routes.get('/questions', Question.index)
 routes.get('/questions/:id', Question.show)
 routes.post('/questions', Question.store)
 
