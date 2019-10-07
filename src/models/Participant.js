@@ -13,6 +13,10 @@ const ParticipantSchema = new mongoose.Schema({
 		unique: true,
 		select: false
 	},
+	avatar: {
+		type: String,
+		default: "https://enbatiapi.herokuapp.com/images/default.svg"
+	},
 	wishContent: {
 		type: Boolean,
 		default: false
