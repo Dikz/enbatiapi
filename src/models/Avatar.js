@@ -9,15 +9,16 @@ const AvatarSchema = new mongoose.Schema({
 	},
 	approved: {
 		type: Boolean,
-		default: false
+		default: false,
+		select: false
 	}
 }, { timestamps: true })
 
 AvatarSchema.plugin(beautifyUnique)
 
-AvatarSchema.pre('save', function (next) {
+/*AvatarSchema.pre('save', function (next) {
 	this.approved = false
 	return next()
-})
+})*/
 
 module.exports = mongoose.model('Avatar', AvatarSchema)

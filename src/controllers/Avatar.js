@@ -12,6 +12,10 @@ class AvatarController {
 
 	async store(req, res) {
 		try {
+			if (req.header('secret') != process.env.SECRET) {
+				req.body.approved = false
+			}
+
 			const avatar = await Avatar.create(req.body)
 
 			req.io.sockets.emit('newAvatar', avatar)
