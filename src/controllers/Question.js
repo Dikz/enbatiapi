@@ -1,4 +1,5 @@
 const Question = require('../models/Question')
+const Participant = require('../models/Participant')
 
 class QuestionController {
 	async index(req, res) {
@@ -17,13 +18,18 @@ class QuestionController {
 
 	async store(req, res) {
 		try {
+			const author = await Participant.findById(req.body.author)
+
+			if (!author) return res.status(400).send({
+				message: 'Este participante não está cadastrado ou ID está incorreto!'
+			})
+
 			const question = await Question.create(req.body)
 
 			req.io.sockets.emit('newQuestion', question)
 
 			return res.send(question)
 		} catch(err) {
-			console.log(err)
 			return res.status(400).send(err)
 		}
 
