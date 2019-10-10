@@ -24,7 +24,8 @@ class QuestionController {
 				message: 'Este participante não está cadastrado ou ID está incorreto!'
 			})
 
-			const question = await Question.create(req.body)
+			let question = await Question.create(req.body)
+			question = await question.populate('author').execPopulate()
 
 			req.io.sockets.emit('newQuestion', question)
 
