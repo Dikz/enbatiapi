@@ -1,4 +1,5 @@
 const Participant = require('../models/Participant')
+const Question = require('../models/Question')
 
 class ParticipantController {
 	async index(req, res) {
@@ -35,6 +36,19 @@ class ParticipantController {
 
 		} catch (err) {
 			return res.status(400).send(err)
+		}
+	}
+
+	async questions(req, res) {
+		try {
+			let { id } = req.params
+			const questions = await Question.find({ author: id })
+
+			return res.send(questions)
+		} catch (err) {
+			return res.status(400).send({
+				message: "Algo deu errado ao buscar questions desse participante"
+			})
 		}
 	}
 }
