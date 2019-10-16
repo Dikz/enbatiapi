@@ -17,6 +17,10 @@ const ParticipantSchema = new mongoose.Schema({
 		type: String,
 		default: "https://enbatiapi.herokuapp.com/images/default.svg"
 	},
+	amountRegistered: {
+		type: Number,
+		default: 0
+	},
 	wishContent: {
 		type: Boolean,
 		default: false

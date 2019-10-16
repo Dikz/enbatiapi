@@ -7,7 +7,8 @@ class QuestionController {
 			const questions = await Question.paginate({}, {
 				page: req.query.page || 1,
 				limit: 10,
-				populate: 'author'
+				populate: 'author',
+				sort: { createdAt: -1 },
 			})
 
 			return res.send(questions)
