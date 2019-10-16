@@ -13,6 +13,7 @@ routes.get('/', (req, res) => {
 routes.use('/images', express.static(resolve(__dirname, 'img')))
 
 routes.get('/participants', Participant.index)
+routes.get('/participants/:id', Participant.show)
 routes.post('/participants', Participant.store)
 
 routes.get('/questions', Question.index)
