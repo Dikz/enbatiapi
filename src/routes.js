@@ -20,6 +20,7 @@ routes.get('/questions/:id', Question.show)
 routes.post('/questions', Question.store)
 
 routes.get('/avatars', Avatar.index)
+routes.get('/random/:amount', Avatar.random)
 routes.post('/avatars', Avatar.store)
 
 module.exports = routes
