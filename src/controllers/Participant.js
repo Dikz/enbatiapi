@@ -29,7 +29,7 @@ class ParticipantController {
 		try {
 			const participant = await Participant.create(req.body)
 
-			req.io.sockets.emit('newParticipant', participant)
+			req.io.sockets.broadcast.emit('newParticipant', participant)
 			console.log(req.io.sockets)
 
 			return res.send(participant)
